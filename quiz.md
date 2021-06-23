@@ -8,11 +8,11 @@ To complete this assignment, you need to build your classification model to clas
 
 Let us start our neural network experience by first preparing the dataset. You will use the `sign-language-mnist` dataset stored in the `data_input` folder with the file names `sign-mnist-train.csv` and `sign-mnist-test.csv`. The data consists of a train and test set that stores sign language images measuring 28 x 28 pixels for 24 different categories.
 
-## 1.1 Load the library and data
+**1.1 Load the library and data**
 
 Please load the following package.
 
-```{r warning=FALSE, message=FALSE}
+```{r}
 library(dplyr)
 library(keras)
 library(caret)
@@ -35,7 +35,7 @@ Inspect the `sign_train` data by using `head()` function.
 
 The `sign_train` data consists of 27455 observations and 785 variables (1 target and 784 predictors). Each predictor represent pixels of the image.
 
-## 1.2 Fixed category on target variable
+**1.2 Fixed category on target variable**
 
 Check the category on the target variable in both the `sign_train` and `sign_test` data by using the `unique()` function
 
@@ -56,11 +56,11 @@ sign_test <- sign_test %>%
   mutate(label = ifelse(label > 9, label-1, label))
 ```
 
-## 1.3 Separates predictors and targets, converts data into matrix, and features scaling
+**1.3 Separates predictors and targets, converts data into matrix, and features scaling**
 
 The data contains the value of pixels stored in a **data.frame**. However, we have to separates predictors and targets for `sign_train` and `sign_test` data and store it as `train_x`, `train_y`, `test_x`, dan `test_y`. You can use `select()` function for separates predictors and targets on `sign_train` and `sign_test` data.
 
-After that, convert `train_x`, `train_y`, `test_x`, dan `test_y` data into matrix before we create a model. Please convert the data into matrix format using `data.matrix()` function. Especially for predictor variables stored in `train_x` and `test_x`, do *features scaling* by dividing by 255.
+After that, convert `train_x`, `train_y`, `test_x`, dan `test_y` data into matrix before we create a model. Please convert the data into matrix format using `data.matrix()` function. Especially for predictor variables stored in `train_x` and `test_x`, do *features scaling* by dividing with 255.
 
 ```{r}
 # Predictor variables in `sign_train`
@@ -83,7 +83,7 @@ ___
   - [ ] Normalize the array value from 0 to 255 into 0 to 1
 ___
 
-## 1.4 Converting matrix to array
+**1.4 Converting matrix to array**
 
 Next, we have to convert the predictor matrix into an array form. You can use the `array_reshape(data, dim(data))` function to convert the predictor matrix into an array.
 
@@ -121,11 +121,11 @@ ___
   - [ ] Categorical Crossentropy
 ___
 
-## 2.1 Build a model base using `keras_model_sequential()`
+**2.1 Build a model base using `keras_model_sequential()`**
 
 To organize the layers, we should create a base model, which is a sequential model. Call a `keras_model_sequential()` function, and please pipe the base model with the model architecture.
 
-## 2.2 Building Architecture (define layers, neurons, and activation function)
+**2.2 Building Architecture (define layers, neurons, and activation function)**
 
 To define the architecture for each layer, we will build several models by tuning several parameters. Before building the architecture, we set the initializer to make sure the result will not change.
 
@@ -165,7 +165,7 @@ ___
   - [ ] In the hidden and output layer, we use any even number
 ___
 
-## 2.3 Building Architecture (define cost function and optimizer)
+**2.3 Building Architecture (define cost function and optimizer)**
 
 We still need to do several settings before training the `model_base` and `model_bigger`. We must compile the model by defining the *loss function*, *optimizer* type, and evaluation metrics. Please compile the model to `model_base` and `model_bigger` by setting these parameters:
 - *categorical_crossentropy* as the loss function
@@ -182,8 +182,7 @@ We still need to do several settings before training the `model_base` and `model
 
 ```
 
-
-## 2.4 Fitting model in the training set (define epoch and batch size)
+**2.4 Fitting model in the training set (define epoch and batch size)**
 
 In this step, we fit our model using `epoch = 10`, `batch_size = 150`, and set parameter `shuffle = F` so that the samples in each batch are not taken *randomly* but sorted (*sequence*) for `model_base` and `model_bigger`. Please save the fit model results into `history_base` and `history_bigger`.
 
@@ -215,10 +214,9 @@ pred_base <-
 pred_bigger <- 
 ```
 
-
 # 4 Evaluating the neural network model
 
-## 4.1 Confusion Matrix (classification)
+**4.1 Confusion Matrix (classification)**
 
 You can evaluate the model using several *metrics*. In this quiz, please check the accuracy by creating confusion matrix. You can use `confusionMatrix()` from `caret` package.
 
@@ -237,7 +235,7 @@ ___
 
 ___
 
-# 4.2 Model Tuning
+**4.2 Model Tuning**
 
 Because both models have not provided a good enough performance (*best fit*) where `model_base` tends to be *underfitting* and `model_bigger` tends to be *overfitting*, improvements will be made to `model_bigger`. Now, let's try to build `model_tuning` by defining the following parameters:
 - the first layer contains 128 nodes, relu activation function, 784 input shape

@@ -19,7 +19,7 @@ Untuk menyelesaikan kuis ini, Anda perlu untuk membuat model klasifikasi untuk m
 
 Mari kita mulai pengalaman penerapan neural network kita dengan menyiapkan dataset sebagai langkah pertama. Anda akan menggunakan `sign-language-mnist` dataset yang disimpan dalam folder `data_input`dengan nama file `sign-mnist-train.csv` dan `sign-mnist-test.csv`. Data terdiri dari satu set train dan test yang menyimpan gambar bahasa isyarat (sign language) berukuran 28 x 28 pixel untuk 24 kategori yang berbeda. 
 
-## 1.1 Panggil library dan Baca data
+**1.1 Panggil library dan Baca data**
 
 Silakan panggil package berikut:
 
@@ -46,7 +46,7 @@ Periksa data `sign_train` dengan menggunakan `head()`.
 
 `sign_train` terdiri dari 27455 observasi dan 785 variabel (1 target and 784 prediktor). Setiap prediktor merepresentasikan pixel dari gambar.
 
-## 1.2 Memperbaiki kategori pada target variabel
+**1.2 Memperbaiki kategori pada target variabel**
 
 Periksa kategori pada target variabel baik pada data `sign_train` dan `sign_test` degan menggunakan fungsi `unique()`
 
@@ -67,7 +67,7 @@ sign_test <- sign_test %>%
   mutate(label = ifelse(label > 9, label-1, label))
 ```
 
-## 1.3 Memisahkan prediktor dan target, mengubah data ke dalam matriks, dan features scaling
+**1.3 Memisahkan prediktor dan target, mengubah data ke dalam matriks, dan features scaling**
 
 Data berisi nilai pixel yang disimpan dalam data frame. Namun, kita harus memisahkan prediktor dan target untuk data `sign_train` dan `sign_test` dan menyimpannya ke dalam `train_x`, `train_y`, `test_x`, dan `test_y`. Anda dapat memanfaatkan fungsi `select()` untuk memisahkan prediktor dan target pada data `sign_train` dan `sign_test`. 
 
@@ -102,7 +102,7 @@ ___
 ___
 
 
-## 1.4 Mengubah matriks menjai array
+**1.4 Mengubah matriks menjai array**
 
 Selanjutnya, kita harus mengubah matriks prediktor ke dalam bentuk array. Anda dapat menggunakan fungsi `array_reshape(data, dim(data))` untuk mengubah matriks prediktor menjadi array.
 
@@ -146,11 +146,11 @@ ___
   - [ ] Categorical Crossentropy
 ___
 
-## 2.1 Membuat sebuah model dasar menggunakan `keras_model_sequential()`
+**2.1 Membuat sebuah model dasar menggunakan `keras_model_sequential()`**
 
 Untuk mengatur layer, kita harus membuat model dasar, yaitu model sequential. Panggil fungsi `keras_model_sequential()`, dan gunakan operator *pipe* untuk membangun arsitektur model dari model dasar yang ada.
 
-## 2.2 Membangun Arsitektur (menentukan layer, neuron, dan fungsi aktivasi)
+**2.2 Membangun Arsitektur (menentukan layer, neuron, dan fungsi aktivasi)**
 
 Untuk membangun arsitektur tiap layer, kita akan membuat beberapa model dengan mengatur beberapa parameter. Sebelum membangun arsitekturnya, kita atur *initializer* untuk memastikan hasil yang kita dapat tidak akan berubah.
 
@@ -196,7 +196,7 @@ ___
   
 ___
 
-## 2.3 Membangun arsitektur (menentukan *cost function* dan *optimizer*)
+**2.3 Membangun arsitektur (menentukan *cost function* dan *optimizer*)**
 
 Kita masih perlu melakukan beberapa pengaturan sebelum melatih `model_base` dan` model_bigger`. Kita harus menyusun model dengan menentukan *loss function*, jenis *optimizer*, dan metrik evaluasi. Anda dapat melakukan *compile* model terhadap `model_base` dan `model_bigger` dengan menggunakan parameter berikut:
 - *categorical_crossentropy* sebagai loss function
@@ -213,7 +213,7 @@ Kita masih perlu melakukan beberapa pengaturan sebelum melatih `model_base` dan`
 
 ```
 
-## 2.4 *Fitting model* di data train (mengatur epoch dan ukuran batch)
+**2.4 *Fitting model* di data train (mengatur epoch dan ukuran batch)**
 
 Pada tahap ini, kita fit model menggunakan `epoch = 10`, `batch_size = 150`, dan menambahkan parameter `shuffle = F` agar sampel pada tiap batch tidak diambil secara *random* melainkan terurut (*sequence*) untuk `model_base` dan `model_bigger`. Silahkan simpan hasil fit model ke dalam `history_base` dan `history_bigger`.
 
@@ -252,7 +252,7 @@ pred_bigger <-
 
 # 4 Evaluasi model neural network
 
-## 4.1 Confusion Matrix (klasifikasi)
+**4.1 Confusion Matrix (klasifikasi)**
 
 Anda dapat mengevaluasi model menggunakan beberapa *metrics*. Pada kuis ini, periksalah akurasi dengan membuat confusion matrix. Silahkan gunakan fungsi `confusionMatrix()` dari package `caret`.
 
@@ -277,7 +277,7 @@ ___
   
 ___
   
-# 4.2 Model Tuning
+**4.2 Model Tuning**
 
 Karena kedua model belum memberikan performa yang cukup baik (*best fit*) dimana `model_base` cenderung *underfitting* dan `model_bigger` cenderung *overfitting*, maka akan dilakukan perbaikan pada `model_bigger`. Sekarang, mari kita coba membangun `model_tuning` dengan mengatur parameter sebagai berikut:
 - layer pertama berisi 128 nodes, fungsi aktivasi relu, 784 input shape
