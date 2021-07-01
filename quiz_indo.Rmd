@@ -17,7 +17,7 @@ Untuk menyelesaikan kuis ini, Anda perlu untuk membuat model klasifikasi untuk m
 
 # 1 Persiapan Data
 
-Mari kita mulai pengalaman penerapan neural network kita dengan menyiapkan dataset sebagai langkah pertama. Anda akan menggunakan `sign-language-mnist` dataset yang disimpan dalam folder `data_input`dengan nama file `sign-mnist-train.csv` dan `sign-mnist-test.csv`. Data terdiri dari satu set train dan test yang menyimpan gambar bahasa isyarat (sign language) berukuran 28 x 28 pixel untuk 24 kategori yang berbeda. 
+Mari kita mulai pengalaman penerapan neural network kita dengan menyiapkan dataset sebagai langkah pertama. Anda akan menggunakan `sign-language-mnist` dataset yang dapat diunduh pada [laman berikut](https://www.kaggle.com/datamunge/sign-language-mnist). Data yang harus diunduh, yaitu `sign-mnist-train.csv` sebagai data train dan `sign-mnist-test.csv` sebagai data test, kemudian simpan kedua data tersebut ke dalam folder kuis yang Anda gunakan *(Neural-Network-v2)*. Kedua data tersebut menyimpan gambar bahasa isyarat (sign language) berukuran 28 x 28 pixel untuk 24 kategori yang berbeda. 
 
 **1.1 Panggil library dan Baca data**
 

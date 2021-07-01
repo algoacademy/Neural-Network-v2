@@ -6,7 +6,7 @@ To complete this assignment, you need to build your classification model to clas
 
 # 1 Data Preparation
 
-Let us start our neural network experience by first preparing the dataset. You will use the `sign-language-mnist` dataset stored in the `data_input` folder with the file names `sign-mnist-train.csv` and `sign-mnist-test.csv`. The data consists of a train and test set that stores sign language images measuring 28 x 28 pixels for 24 different categories.
+Let us start our neural network experience by first preparing the dataset. You will use `sign-language-mnist` dataset which can be downloaded on [the following page](https://www.kaggle.com/datamunge/sign-language-mnist). Data to download are `sign-mnist-train.csv` as train data and `sign-mnist-test.csv` as test date, then save both data into quiz folder that you use *(Neural-Network-v2)*. Both of the data stores sign language images measuring 28 x 28 pixels for 24 different categories.
 
 **1.1 Load the library and data**
 
